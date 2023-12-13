@@ -25,6 +25,8 @@ function thresholded = singh_threshold(matrix,window_size,bias)
                    mean_deviation = matrix(row,col) - mean;
                    T = mean*(1+bias*((mean_deviation/(1-mean_deviation))-1))*255;
                    done = 1;
+                else 
+                    d = d - 1;
                 end
             end
             if matrix(row:col) < T 
