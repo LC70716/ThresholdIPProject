@@ -2,10 +2,24 @@ function thresholded = singh_threshold(matrix,window_size,bias)
     Matrix = double(matrix);
     Matrix = Matrix ./ 255;
     thresholded = ones(size(Matrix,1),size(Matrix,2)); % initializing output as all background
-    integral_sum_image = integralImage(Matrix);
-    d = round(window_size/2);
-    for row = 1 : size(Matrix,1) %iterating over all rows and colums
+    integral_sum_image = ones(size(Matrix,1),size(Matrix,2),"double");
+    integral_sum_image(1,1) = Matrix(1,1);
+    for row = 1 : size(Matrix,1)
         for col = 1 : size(Matrix,2)
+            if row == 1 && col ~= 1 %integral sum of first row
+                integral_sum_image(row,col) = Matrix(row,col) + integral_sum_image(row,col-1);
+            
+            else if col == 1 && row ~= 1 %integral sum of first column
+                     integral_sum_image(row,col) = Matrix(row,col) + integral_sum_image(row-1,col);
+            else
+               
+            end 
+            end
+        end 
+    end
+    d = round(window_size/2);
+    for row = 1 : size(integral_sum_image,1) %iterating over all rows and colums
+        for col = 1 : size(integral_sum_image,2)
             temp_d = d;
             while true
                 logic = [(row - temp_d) >= 1, (row + temp_d - 1) <= size(integral_sum_image,1), (col - temp_d) >= 1, (col + temp_d - 1) <= size(integral_sum_image,2)];
@@ -22,7 +36,7 @@ function thresholded = singh_threshold(matrix,window_size,bias)
                 end
                 temp_d = temp_d - 1;
              end
-            if Matrix(row,col) <= T 
+            if Matrix(row:col) >= T 
                thresholded(row,col) = 0;
             end 
         end
