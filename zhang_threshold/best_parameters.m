@@ -5,20 +5,12 @@ function best_window = best_parameters(img)
     ssim_vals = zeros(1, 3);
     w_array = zeros(1, 3);
 
-    for window=15:10:35 
+    for window=15:10:15 
         j=j+1; 
         w_array(j) = window;
         
-        %casting image to uint8
-        img = uint8(img);
-        
         % CALLING ZHANG THRESHOLD FUNCTION
         thresholded = zhang_threshold(img, window);
-
-        % Converting thresholded image to double too
-        img = double(img);
-        img = mat2gray(img); 
-        thresholded = double(thresholded);
 
         % Computing metrics
         ssim_val = ssim(thresholded, img);
