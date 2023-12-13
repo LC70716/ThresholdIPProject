@@ -4,10 +4,10 @@ function thresholded = singh_threshold(matrix,window_size,bias)
     integral_sum_image(1,1) = matrix(1,1);
     for row = 1 : size(matrix,1)
         for col = 2 : size(matrix,2)
-            if col == 1
+            if col ~= 1
             integral_sum_image(row,col) = matrix(row,col) + integral_sum_image(row,col-1);
             end 
-            if col ~= 1
+            if col == 1
             integral_sum_image(row,col) = matrix(row,col) + integral_sum_image(row-1,size(matrix,2));
             end 
         end 
