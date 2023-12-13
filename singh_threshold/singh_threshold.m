@@ -1,4 +1,4 @@
-function thresholded = zhang_threshold(matrix,window_size,bias)
+function thresholded = singh_threshold(matrix,window_size,bias)
     thresholded = ones(size(matrix,1),size(matrix,2)) * 255; % initializing output as all background
     integral_sum_image = ones(size(matrix,1),size(matrix,2)) * 255
     integral_sum_image(1,1) = matrix(1,1);
