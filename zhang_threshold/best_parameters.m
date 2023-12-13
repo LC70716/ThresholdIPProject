@@ -5,7 +5,7 @@ function best_window = best_parameters(img)
     ssim_vals = zeros(1, 10);
     w_array = zeros(1, 10);
 
-    for window=5:5:50 
+    for window=100:5:100 
         j=j+1; 
         w_array(j) = window;
         
