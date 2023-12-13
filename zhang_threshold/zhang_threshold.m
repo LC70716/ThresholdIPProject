@@ -23,4 +23,7 @@ function thresholded = zhang_threshold(matrix,window_size)
             thresholded(row,col) = 0;
         end 
         end
+
+        %casting image to 8bit unsigned int
+        thresholded = im2uint8(thresholded);
     end
