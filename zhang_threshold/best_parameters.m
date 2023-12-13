@@ -1,11 +1,11 @@
 function best_window = best_parameters(img)
 
     j=0;
-    psnr_vals = zeros(1, 3); % Preallocate arrays to store metric values
-    ssim_vals = zeros(1, 3);
-    w_array = zeros(1, 3);
+    psnr_vals = zeros(1, 10); % Preallocate arrays to store metric values
+    ssim_vals = zeros(1, 10);
+    w_array = zeros(1, 10);
 
-    for window=15:10:15 
+    for window=5:5:50 
         j=j+1; 
         w_array(j) = window;
         
@@ -34,4 +34,18 @@ function best_window = best_parameters(img)
     disp(max_ssim);
     disp('Window size for max SSIM:');
     disp(w_array(index_ssim));
+
+    % Plotting PSNR vs. Window
+    figure;
+    plot(w_array, psnr_vals, '-o', 'LineWidth', 2);
+    xlabel('Window Size');
+    ylabel('PSNR');
+    title('PSNR vs. Window Size');
+
+    % Plotting SSIM vs. Window
+    figure;
+    plot(w_array, ssim_vals, '-o', 'LineWidth', 2);
+    xlabel('Window Size');
+    ylabel('SSIM');
+    title('SSIM vs. Window Size');
 end
