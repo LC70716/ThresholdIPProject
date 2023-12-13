@@ -19,7 +19,8 @@ function thresholded = singh_threshold(matrix,window_size,bias)
             done = 0;
             T = 0;
             while done == 0
-                if (row - d) > 1 && (row + d - 1) <= size(integral_sum_image) && (col - d) > 1 && (col + d - 1) <= size(integral_sum_image)
+                logic = [(row - d) >= 1, (row + d - 1) <= size(integral_sum_image),(col - d) >= 1,(col + d - 1) <= size(integral_sum_image),row + d - 1 >= 1,col + d - 1 >= 1];
+                if all(logic,'all')
                    local_sum = (integral_sum_image(row+d-1,col+d-1) + integral_sum_image(row-d,col-d)) - (integral_sum_image(row-d,col+d-1) + integral_sum_image(row+d-1,col-d));
                    mean = local_sum/(window_size^2);
                    mean_deviation = matrix(row,col) - mean;
