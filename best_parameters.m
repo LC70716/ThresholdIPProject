@@ -1,11 +1,10 @@
 function best_window = best_parameters(corrupt, gr_truth)
     j = 0; % window index
-    i = 0; % bias index
     psnr_vals = zeros(1, 10); % Preallocate arrays to store metric values
     ssim_vals = zeros(1, 10);
     mssim_vals = zeros(1, 10);
     w_array = zeros(1, 10);
-    k_array = zeros(1, 10);
+    k_array = zeros(1, 40);
 
     for window = 5:10:105 % window size for loop
         j = j + 1;
