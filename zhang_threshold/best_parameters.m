@@ -1,4 +1,4 @@
-function best_window = best_parameters(corrupt, gr_truth)
+function best_window&bias = best_parameters(corrupt, gr_truth)
     j = 0; % window index
     i = 0; % bias index
     psnr_vals = zeros(1, 10); % Preallocate arrays to store metric values
@@ -7,15 +7,15 @@ function best_window = best_parameters(corrupt, gr_truth)
     w_array = zeros(1, 10);
     k_array = zeros(1, 10);
 
-    for window = 15:10:115 % window size for loop
+    for window = 5:10:105 % window size for loop
         j = j + 1;
         w_array(j) = window;
 
         k = 1; % Start value for bias index
 
-        for bias_k = min_possible_value:increment_per_iteration:max_possible_value % bias for loop
+        for bias_k = 0:1:0 % bias for loop
             % CALLING ZHANG THRESHOLD FUNCTION
-            thresholded = zhang_threshold(corrupt, window, bias_k);
+            thresholded = zhang_threshold(corrupt, window);
 
             % Computing metrics
             ssim_val = ssim(thresholded, gr_truth);
