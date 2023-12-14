@@ -11,12 +11,12 @@ function [w_matrix,k_matrix,psnr_vals,ssim_vals,mssim_vals] = batch_best_paramet
     ssim_vals = zeros(3,size(ref_images));
     mssim_vals = zeros(3,size(ref_images));
     for i = 1 : size(ref_images) 
-        [w_matrix(1,i),k_matrix(1,i),psnr_vals(1,i),ssim_vals(1,i),pmssim_vals(1,i)] = best_parameters_singh(cor_images(i),ref_images(i));
+        [w_matrix(1,i),k_matrix(1,i),psnr_vals(1,i),ssim_vals(1,i),pmssim_vals(1,i)] = best_parameters_singh(imread(cor_images(i)),imread(ref_images(i)));
     end
     for i = 1 : size(ref_images)
-        [w_matrix(2,i),k_matrix(2,i),psnr_vals(2,i),ssim_vals(2,i),pmssim_vals(2,i)] = best_parameters_zhang(cor_images(i),ref_images(i));
+        [w_matrix(2,i),k_matrix(2,i),psnr_vals(2,i),ssim_vals(2,i),pmssim_vals(2,i)] = best_parameters_zhang(imread(cor_images(i)),imread(ref_images(i)));
     end 
     for i = 1 : size(ref_images)
-        [w_matrix(3,i),k_matrix(3,i),psnr_vals(3,i),ssim_vals(3,i),pmssim_vals(3,i)] = best_parameters_niblack(cor_images(i),ref_images(i));
+        [w_matrix(3,i),k_matrix(3,i),psnr_vals(3,i),ssim_vals(3,i),pmssim_vals(3,i)] = best_parameters_niblack(imread(cor_images(i)),imread(ref_images(i)));
     end
 
