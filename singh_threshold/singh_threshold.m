@@ -26,4 +26,7 @@ function thresholded = singh_threshold(matrix,window_size,bias)
                thresholded(row,col) = 0;
             end 
         end
+
+        %casting image to 8bit unsigned int
+        thresholded = im2uint8(thresholded);
     end
