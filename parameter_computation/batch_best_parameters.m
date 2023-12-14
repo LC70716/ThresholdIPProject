@@ -2,7 +2,7 @@
 % The FIRST index relates to the ALGORITHM USED, the SECOND to THE IMAGE
 % ref_images and corrupted_images ARE INTENDED TO BE ARRAYS CONTAINING THE IMAGES' NAMES in such fashion : 'myimage.tiff'
 % make sure to add the WHOLE REPO to your matlab path
-% since ZHANG doesn't have bias, they are all listed as NaN, 
+% since ZHANG doesn't have bias, they are all listed as -1, 
 % if in the future algos have more or less arguments the same approach should be used to detect problems during data analysis
 function [w_matrix,k_matrix,psnr_vals,ssim_vals,mssim_vals] = batch_best_parameters(ref_images,cor_images)
     w_matrix = zeros(3,10); % 3 algorithms, so first index has length 3. 10 different window sizes,so second index has length 10.
