@@ -1,1 +1,93 @@
-c
+clear
+clc
+%%
+% Read your the image which is located in the current folder.
+image = imread('name.format'); 
+% if the image is a RGB image, use this simple command.
+image= rgb2gray(image);
+image = double(image);
+%%
+% Enter the range of Bias values.
+contrast_threshold=[5:3:45];
+window=[15:5:95];
+w=0; % window dimention i.g. w=15; means a 15x15 window
+
+j=0;
+for w=window % window dimention
+j=j+1; 
+
+i=0;
+for k=contrast_threshold % k is contrast threshold values
+i=i+1;
+%% Bernsen method using the function by Jan motel
+
+thr_img=bernsen(image,[w,w],k); % The local thresholded image
+
+%%
+% Now calculate the functions for assessing our thresholding quality
+
+thr_img = double(thr_img);
+image = mat2gray(image); % The values should be within the range of 0 and 1
+
+ssim_val = ssim(thr_img,image);
+crr_cf=corrcoef(thr_img,image);
+mssim_val = multissim(th_img,image);
+psnr_val=psnr(th_img,image); 
+
+% Put all of those results in obove in q_val variable
+q_val(i,1)=ssim_val;
+q_val(i,2)=crr_cf(2,1);
+q_val(i,3)=mssim_val;
+q_val(i,4)=psnr_val(end);
+
+[~ , num_mth] =size(q_val); % Number of methods for assessing the thresholding
+end  % end of loop related to iterating bias values
+
+%%
+% if you want to plot all the results you can use this Block.(need some chaanges)
+
+% max_ssim=k(res(:,1)==max(res(:,1)));
+% max_corrcf=k(res(:,2)==max(res(:,2)));
+% max_mssim=k(res(:,3)==max(res(:,3)));
+% max_psnr=k(res(:,4)==max(res(:,4)));
+% 
+% figure; plot(k,res(:,1));
+% ylabel('value')
+% xlabel('bias')
+% 
+% hold on
+% plot(k,res(:,2));
+% hold on
+% plot(k,res(:,3));
+% hold on
+% plot(k,res(:,4));
+%
+% legend('SSIM','CORRELATION','MSSIM','PSNR')
+% 
+% title('Various methods to assess thresholding by Niblack method')
+%%
+% Calculating the maximum values which correspounds to the best parameters 
+for x=[1:num_mth]
+max_val=contrast_threshold(q_val(:,x)==max(q_val(:,x)));
+
+results(j,3*x-2)=w;
+results(j,3*x-1)=max(q_val(:,x));
+results(j,3*x)=max_val;
+
+best(x,1)=results(results(:,3*x-1)==max(results(:,3*x-1)),1); % The best window dimention
+best(x,2)=results(results(:,3*x-1)==max(results(:,3*x-1)),3); % The best Bias value
+%%
+
+end
+
+end % end of for loop iterating window dimention
+
+% showing the results with the best parameters
+for y=[1,num_mth]
+
+ best_thr_img=bernsen(image,[best(x,1),best(x,1)],best(x,2));
+     
+%%
+     figure; imshow(best_thr_img)
+  
+end
