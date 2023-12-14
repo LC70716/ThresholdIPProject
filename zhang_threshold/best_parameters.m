@@ -13,9 +13,9 @@ function best_window = best_parameters(corrupt, gr_truth)
 
         k = 1; % Start value for bias index
 
-        for bias_k = 0:1:0 % bias for loop
+        for bias_k = 0:0.025:1 % bias for loop
             % CALLING ZHANG THRESHOLD FUNCTION
-            thresholded = zhang_threshold(corrupt, window);
+            thresholded = singh_threshold(corrupt, window, bias_k);
 
             % Computing metrics
             ssim_val = ssim(thresholded, gr_truth);
