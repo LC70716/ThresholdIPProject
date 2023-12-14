@@ -1,4 +1,4 @@
-function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters(corrupt, gr_truth)
+function best_window = best_parameters(corrupt, gr_truth)
     j = 0; % window index
     psnr_vals = zeros(1, 10); % Preallocate arrays to store metric values
     ssim_vals = zeros(1, 10);
