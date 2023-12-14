@@ -32,7 +32,7 @@ i=i+1;
 % threshold = mean + k * StandardDeviation;
 % thr_img=(image>threshold);
 
-%% Using the Niblack method using the function by Jan Motel
+%% Niblack method using the function by Jan Motel
 
 thr_img = niblack(image,[w w],k); % The local thresholded image
 
@@ -101,7 +101,6 @@ end % end of for loop iterating window dimension
 % showing the results with the best parameters
 
 for y=[1,num_mth]
-
     
 %% Niblack method written by simple functions    
 %     filter = fspecial('average', best(y,1));
@@ -111,7 +110,7 @@ for y=[1,num_mth]
 % 
 %     best_threshold = mean + best(y,2) * StandardDeviation;
 %     best_thr_img=(image>best_threshold); % The best thresholded image
-%% Using the Niblack method using the function by Jan Motel
+%% Niblack method using the function by Jan Motel
 
      best_thr_img=niblack(image, [best(y,1) best(y,1)],best(y,2)); % The best Thresholded image
      
