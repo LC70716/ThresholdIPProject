@@ -1,12 +1,13 @@
-function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_singh(corrupt, gr_truth)
+function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_sauvola(corrupt, gr_truth)
     j = 0; % window index
     psnr_vals = zeros(40, 10); % Preallocate arrays to store metric values
     ssim_vals = zeros(40, 10);
     mssim_vals = zeros(40, 10);
-    w_array = zeros(40, 10);
-    k_array = zeros(40, 40);
+    w_array = zeros(1, 10);
+    k_array = zeros(1, 40);
 
     for window = 5:10:105 % window size for loop
+        j
         j = j + 1;
         w_array(j) = window;
 
