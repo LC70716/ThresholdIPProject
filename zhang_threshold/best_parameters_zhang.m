@@ -1,8 +1,8 @@
 function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_zhang(corrupt, gr_truth)
     j = 0; % window index
-    psnr_vals = zeros(40, 10); % Preallocate arrays to store metric values
-    ssim_vals = zeros(40, 10);
-    mssim_vals = zeros(40, 10);
+    psnr_vals = zeros(41, 11); % Preallocate arrays to store metric values
+    ssim_vals = zeros(41, 11);
+    mssim_vals = zeros(41, 11);
     w_array = zeros(1, 11);
     k_array = ones(1, 41) .* -1; % since they are not used in the algo, but needed for consistency in the batch
 
