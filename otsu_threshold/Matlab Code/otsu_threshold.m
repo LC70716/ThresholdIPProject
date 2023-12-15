@@ -34,4 +34,7 @@ function thresholded = otsu_threshold(image, block_size, weight_factor)
             
         end
     end
+
+    %casting image to 8bit unsigned int
+    thresholded = im2uint8(thresholded);
 end

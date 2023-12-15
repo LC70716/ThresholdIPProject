@@ -25,4 +25,8 @@ function thresholded = sauvola_threshold(matrix,window_size, bias)
         end
         end
     end
+
+    %casting image to 8bit unsigned int
+    thresholded = im2uint8(thresholded);
+
 end
