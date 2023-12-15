@@ -18,12 +18,13 @@ function [w_matrix,k_matrix,psnr_vals,ssim_vals,mssim_vals] = batch_best_paramet
     mssim_vals = cell([5,10]);
     for i = 1 : size(ref_images) 
         [w_matrix(1,i),k_matrix(1,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_singh(imread(cor_images(i)),imread(ref_images(i)));
-        psnr_vals{1}{i} = temp_psnr_vals;
-        ssim_vals{1}{i} = temp_ssim_vals;
-        mssim_vals{1}{i} = temp_mssim_vals;
+        psnr_vals{i} = temp_psnr_vals;
+        ssim_vals{i} = temp_ssim_vals;
+        mssim_vals{i} = temp_mssim_vals;
     end 
     for i = 1 : size(ref_images)
-        [w_matrix(2,i),k_matrix(2,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_niblack(imread(cor_images(i)),imread(ref_images(i)));
+        
+        = best_parameters_niblack(imread(cor_images(i)),imread(ref_images(i)));
         cat(3,psnr_vals,temp_psnr_vals);
         cat(3,ssim_vals,temp_ssim_vals);
         cat(3,mssim_vals,temp_mssim_vals);
