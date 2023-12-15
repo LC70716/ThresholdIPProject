@@ -24,34 +24,40 @@ function [w_matrix,k_matrix,psnr_vals,ssim_vals,mssim_vals] = batch_best_paramet
         ssim_vals{1}{i} = temp_ssim_vals;
         mssim_vals{1}{i} = temp_mssim_vals;
     end 
+    save('up_to_singh')
     for i = 1 : size(ref_images)
-        [w_matrix(2,i),k_matrix(2,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_niblack(imread(cor_images(i)),imread(ref_images(i)));
+        [w_matrix(2,:),k_matrix(2,:),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_niblack(imread(cor_images(i)),imread(ref_images(i)));
         psnr_vals{2}{i} = temp_psnr_vals;
         ssim_vals{2}{i} = temp_ssim_vals;
         mssim_vals{2}{i} = temp_mssim_vals;
     end
+    save('up_to_niblack')
     for i = 1 : size(ref_images)
-        [w_matrix(3,i),k_matrix(3,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_sauvola(imread(cor_images(i)),imread(ref_images(i)));
+        [w_matrix(3,:),k_matrix(3,:),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_sauvola(imread(cor_images(i)),imread(ref_images(i)));
         psnr_vals{3}{i} = temp_psnr_vals;
         ssim_vals{3}{i} = temp_ssim_vals;
         mssim_vals{3}{i} = temp_mssim_vals;
     end
+    save('up_to_sauvola')
     for i = 1 : size(ref_images)
-        [w_matrix(4,i),k_matrix(4,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_bernsen(imread(cor_images(i)),imread(ref_images(i)));
+        [w_matrix(4,:),k_matrix(4,:),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_bernsen(imread(cor_images(i)),imread(ref_images(i)));
         psnr_vals{4}{i} = temp_psnr_vals;
         ssim_vals{4}{i} = temp_ssim_vals;
         mssim_vals{4}{i} = temp_mssim_vals;
     end
+    save('up_to_bernsen')
     for i = 1 : size(ref_images)
-        [w_matrix(5,i),k_matrix(5,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_otsu(imread(cor_images(i)),imread(ref_images(i)));
+        [w_matrix(5,:),k_matrix(5,:),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_otsu(imread(cor_images(i)),imread(ref_images(i)));
         psnr_vals{5}{i} = temp_psnr_vals;
         ssim_vals{5}{i} = temp_ssim_vals;
         mssim_vals{5}{i} = temp_mssim_vals;
     end
+    save('up_to_otsu')
     for i = 1 : size(ref_images)
-        [w_matrix(6,i),k_matrix(6,i),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_zhang(imread(cor_images(i)),imread(ref_images(i)));
+        [w_matrix(6,:),k_matrix(6,:),temp_psnr_vals,temp_ssim_vals,temp_mssim_vals] = best_parameters_zhang(imread(cor_images(i)),imread(ref_images(i)));
         psnr_vals{6}{i} = temp_psnr_vals;
         ssim_vals{6}{i} = temp_ssim_vals;
         mssim_vals{6}{i} = temp_mssim_vals;
     end
+    save('up_to_zhang')
 
