@@ -1,4 +1,4 @@
-function thresholded = phansalkar_threshold(image, block_size, k, p, R)
+function thresholded = phansalkar_threshold(image, block_size, k, R, p)
     q = 10;
     % Calculate Otsus threshold using block-wise processing
     [rows, cols] = size(image);

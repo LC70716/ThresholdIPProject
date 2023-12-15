@@ -8,8 +8,8 @@ function [w_array,k_array,R_array,p_array,psnr_vals,ssim_vals,mssim_vals] = best
     mssim_vals2 = cell([41 41]);
     w_array = zeros(1, 11);
     k_array = zeros(1, 41);
-    R_array = zeros(1:41);
-    p_array = zeros(1:41);
+    R_array = zeros(1,41);
+    p_array = zeros(1,41);
 
 
     for window = 5:10:105 % window size for loop
