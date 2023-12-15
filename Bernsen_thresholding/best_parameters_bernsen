@@ -1,5 +1,5 @@
 
-function best_parameters_bernsen3(currupt_img,ground_truth_img)
+function best_parameters_bernsen(currupt_img,ground_truth_img)
 
 currupt_img = double(currupt_img);
 ground_truth_img = double(ground_truth_img);
