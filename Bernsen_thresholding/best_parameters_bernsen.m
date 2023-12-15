@@ -1,4 +1,4 @@
-function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_singh(corrupt, gr_truth)
+function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_bernsen(corrupt, gr_truth)
     j = 0; % window index
     psnr_vals = zeros(40, 10); % Preallocate arrays to store metric values
     ssim_vals = zeros(40, 10);
@@ -13,9 +13,9 @@ function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_sing
 
         k = 1; % Start value for bias index
 
-        for bias_k = 0:0.025:1 % bias for loop
-            % CALLING SINGH THRESHOLD FUNCTION
-            thresholded = singh_threshold(corrupt, window, bias_k);
+        for bias_k = 0:5:200 % bias for loop
+            % CALLING BERSNEN THRESHOLD FUNCTION
+            thresholded = bernsen_threshold(corrupt, [window window], bias_k);
 
             % Computing metrics
             ssim_val = ssim(thresholded, gr_truth);
