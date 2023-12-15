@@ -3,8 +3,8 @@ function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_sing
     psnr_vals = zeros(40, 10); % Preallocate arrays to store metric values
     ssim_vals = zeros(40, 10);
     mssim_vals = zeros(40, 10);
-    w_array = zeros(40, 10);
-    k_array = zeros(40, 40);
+    w_array = zeros(1, 11);
+    k_array = zeros(1, 41);
 
     for window = 5:10:105 % window size for loop
         j
