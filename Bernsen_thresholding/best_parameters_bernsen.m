@@ -15,7 +15,8 @@ function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_bern
 
         for bias_k = 0:5:200 % bias for loop
             % CALLING BERSNEN THRESHOLD FUNCTION
-            thresholded = bernsen_threshold(corrupt, [window window], bias_k);
+            thresholded = bernsen(corrupt, [window window], bias_k);
+            thresholded = im2uint8(thresholded);
 
             % Computing metrics
             ssim_val = ssim(thresholded, gr_truth);
