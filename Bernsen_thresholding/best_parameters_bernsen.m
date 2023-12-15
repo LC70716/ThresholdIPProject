@@ -7,6 +7,7 @@ function [w_array,k_array,psnr_vals,ssim_vals,mssim_vals] = best_parameters_bern
     k_array = zeros(40, 40);
 
     for window = 5:10:105 % window size for loop
+        j
         j = j + 1;
         w_array(j) = window;
 
