@@ -1,4 +1,4 @@
-function thresholded = otsu_threshold(img, block_size, weight_factor)
+function thresholded = otsu_threshold(img)
 
     %Leonardo accepted points code
     % Loop over different block sizes and weight factors
@@ -8,7 +8,7 @@ function thresholded = otsu_threshold(img, block_size, weight_factor)
             weight_factor = weight_factors(w);
 
             % Initialize the output image as the same size and type as the original image
-            thresholded = zeros(size(img), 'like', img);
+            local_otsu = zeros(size(img), 'like', img);
 
             % Process each block independently
             for i = 1:block_size:size(img, 1)
@@ -31,9 +31,9 @@ function thresholded = otsu_threshold(img, block_size, weight_factor)
                     adjusted_thresh = weight_factor * thresh + (1 - weight_factor) * mean_intensity;
 
                     % Binarize the block using the adjusted threshold
-                    thresholded_block = block > adjusted_thresh;
+                    local_otsu_block = block > adjusted_thresh;
 
                     % Write the binarized block back to the corresponding location in the output image
-                    thresholded(row_indices, col_indices) = thresholded_block * 255;
+                    local_otsu(row_indices, col_indices) = local_otsu_block * 255;
                 end
             end
