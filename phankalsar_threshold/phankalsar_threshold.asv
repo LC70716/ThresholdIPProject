@@ -1,4 +1,4 @@
-function thresholded = phankalsar_threshold(image, block_size, k, p)
+function thresholded = phankalsar_threshold(image, block_size, k, p, R)
     q = 10;
     R = 0.5;
     % Calculate Otsus threshold using block-wise processing
@@ -16,11 +16,13 @@ function thresholded = phankalsar_threshold(image, block_size, k, p)
             block = image(row_indices, col_indices);
 
             % Calculate the mean intensity of the block
-            mean = mean(block(:));
-            std_dev = std(block(:));
+            block = block ./ 255;
+            mean_ = mean(block(:));
+            block
+            std_dev = std(block(:),0,'all');
 
             % Compute the weighted average of the global threshold and the mean intensity
-            adjusted_thresh = mean_intensity*(1 + k*((std_dev)/(R)-1) + p * exp(-q * mean));
+            adjusted_thresh = mean_*(1 + k*((std_dev)/(R)-1) + p * exp(-q * mean_));
 
             % Binarize the block using the adjusted threshold
             thresholded_block = block > adjusted_thresh;
