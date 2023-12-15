@@ -1,0 +1,23 @@
+Hi guys,
+here I want to explain about my way
+
+1.Folder:MATLAB Code- In MATLAB code for Otsu local thresholding, the two key parameters mentioned are:
+
+First: Block-Size: This determines the size of the local regions (blocks) over which the threshold is calculated. A larger block size can smooth over local variations, while a smaller block size can adapt more to local details.(if you see "b" means block-size)
+
+Second: Weight Factor: This factor adjusts the sensitivity of the thresholding. A higher weight can make the algorithm more sensitive to smaller changes in pixel intensity, potentially leading to finer segmentation.(if you see "w" means weight factor)
+
+Both parameters are crucial for tuning the performance of your thresholding algorithm to your specific image data. Experimenting with different values for these parameters will help you achieve the best results.
+
+Additionally, I am evaluating the results with metrics like SNR, PSNR, SSIM, MAE, and RMSE, and organizing this data in an Excel sheet with highlighted values and some plots.
+
+2.Folder: ImageJ- I have performed Otsu thresholding in ImageJ with block sizes of 48 and 64 (unable to change Weight Factor), and calculated metrics like SNR, PSNR, SSIM, MAE, and RMSE for each too. This will allow for a comparative analysis between these block sizes and potentially with your MATLAB results too.
+
+Finally I put the Original Picture that I worked on it in the first file(it is a real picture that I create it in my bedroom :) ), also I put 2 pictures that they are result of MATLAB Code (with block-size 48 ,64 with weight factor:0.5 for both) but I move them to ImageJ to see the how the result of parameters in MATLAB and ImageJ are different
+
+if you have any question, feel free to ask.
+
+
+
+
+
