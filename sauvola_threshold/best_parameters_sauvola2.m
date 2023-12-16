@@ -1,5 +1,5 @@
 
-function best_parameters_sauvola(currupt_img,ground_truth_img)
+function best_parameters_sauvola2(currupt_img,ground_truth_img)
 
 currupt_img = double(currupt_img);
 ground_truth_img = double(ground_truth_img);
@@ -47,6 +47,7 @@ for w=window
        
          vec_max=q_val(:,x)==max(q_val(:,x));
          index_max=find(vec_max);
+         index_max=index_max(end);
          max_val(i,2*x-1)=bias2(index_max);
          max_val(i,2*x)=q_val(index_max,x);
       
@@ -62,6 +63,7 @@ display(max_val)
 
 vec_max=max_val(:,2)==max(max_val(:,2));
 index_max=find(vec_max);
+index_max=index_max(end);
 best_bias_ssim=max_val(index_max,1);
 best_window_ssim=max_val(index_max,9);
 disp(['Best window dimention by SSIM= ', num2str(best_window_ssim(end))])
@@ -69,6 +71,7 @@ disp(['Best bias value by SSIM = ', num2str(best_bias_ssim(end))])
 
 vec_max=max_val(:,4)==max(max_val(:,4));
 index_max=find(vec_max);
+index_max=index_max(end);
 best_bias_crcf=max_val(index_max,3);
 best_window_crcf=max_val(index_max,9);
 disp(['Best window dimention by correlation coefficient= ', num2str(best_window_crcf(end))])
@@ -76,6 +79,7 @@ disp(['Best bias value by correlation coefficient = ', num2str(best_bias_crcf(en
 
 vec_max=max_val(:,6)==max(max_val(:,6));
 index_max=find(vec_max);
+index_max=index_max(end);
 best_bias_mssim=max_val(index_max,5);
 best_window_mssim=max_val(index_max,9);
 disp(['Best window dimention by MSSIM = ', num2str(best_window_mssim(end))])
@@ -83,6 +87,7 @@ disp(['Best bias value by MSSIM = ', num2str(best_bias_mssim(end))])
 
 vec_max=max_val(:,8)==max(max_val(:,8));
 index_max=find(vec_max);
+index_max=index_max(end);
 best_bias_psnr=max_val(index_max,7);
 best_window_psnr=max_val(index_max,9);
 disp(['Best window dimention by PSNR = ', num2str(best_window_psnr(end))])
