@@ -1,0 +1,8 @@
+function means_ = findmeanofimages(number_of_algo,param_cell)
+         cell = param_cell{number_of_algo,1};
+         matrices = NaN;
+         for i = 1 : size(cell)
+             matrices(1,i) = cell{1,i};
+         end 
+         means_ = mean(matrices);
+         
