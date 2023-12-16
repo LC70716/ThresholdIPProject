@@ -63,28 +63,28 @@ index_max=find(vec_max);
 best_ct_ssim=max_val1(index_max,1);
 best_window_ssim=max_val1(index_max,9);
 disp(['Best window dimention by SSIM= ', num2str(best_window_ssim(end))])
-disp(['Best contrast coefficient value by SSIM = ', num2str(best_ct_ssim(end))])
+disp(['Best contrast threshold value by SSIM = ', num2str(best_ct_ssim(end))])
 
 vec_max=max_val1(:,4)==max(max_val1(:,4));
 index_max=find(vec_max);
 best_ct_crcf=max_val1(index_max,3);
 best_window_crcf=max_val1(index_max,9);
 disp(['Best window dimention by correlation coefficient= ', num2str(best_window_crcf(end))])
-disp(['Best contrast coefficient value by correlation coefficient = ', num2str(best_ct_crcf(end))])
+disp(['Best contrast threshold value by correlation coefficient = ', num2str(best_ct_crcf(end))])
 
 vec_max=max_val1(:,6)==max(max_val1(:,6));
 index_max=find(vec_max);
 best_ct_mssim=max_val1(index_max,5);
 best_window_mssim=max_val1(index_max,9);
 disp(['Best window dimention by MSSIM = ', num2str(best_window_mssim(end))])
-disp(['Best contrast coefficient value by MSSIM = ', num2str(best_ct_mssim(end))])
+disp(['Best contrast threshold value by MSSIM = ', num2str(best_ct_mssim(end))])
 
 vec_max=max_val1(:,8)==max(max_val1(:,8));
 index_max=find(vec_max);
 best_ct_psnr=max_val1(index_max,7);
 best_window_psnr=max_val1(index_max,9);
 disp(['Best window dimention by PSNR = ', num2str(best_window_psnr(end))])
-disp(['Best contrast coefficient value by PSNR  = ', num2str(best_ct_psnr(end))])
+disp(['Best contrast threshold value by PSNR  = ', num2str(best_ct_psnr(end))])
 
 
 end 
