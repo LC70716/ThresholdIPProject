@@ -48,9 +48,9 @@ function [w_array,k_array,R_array,p_array,psnr_vals2,ssim_vals2,mssim_vals2] = b
                 R = R + 1;
             end
 
-            ssim_vals2{w}{k} = ssim_vals;
-            psnr_vals2{w}{k} = psnr_vals;
-            mssim_vals2{w}{k} = mssim_vals;
+            ssim_vals2{j}{k} = ssim_vals;
+            psnr_vals2{j}{k} = psnr_vals;
+            mssim_vals2{j}{k} = mssim_vals;
 
         end
     end
